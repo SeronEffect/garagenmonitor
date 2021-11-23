@@ -1,9 +1,13 @@
 #include <Arduino.h>
 #include "ussensor.hpp"
 void setup() {
-  // put your setup code here, to run once:
+  // setup serial connection
+  Serial.begin(115200);
+  // initialize all pins
+  
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // 
 }

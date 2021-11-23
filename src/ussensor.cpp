@@ -6,6 +6,7 @@
 US::US(int trigpin, int echopin) {
     set_echopin(echopin);
     set_trigpin(trigpin);
+    
 }
 
 // Memberfunctions
