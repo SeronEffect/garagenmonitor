@@ -1,31 +1,36 @@
-#include "ussensor.hpp"
-
+#include "Arduino.h"
+#include "ussensor.h"
 // Source-File for Ultrasonic sensor classes. Each sensor instance has its 2 pins and some utility functions.
 
 // US constructor
-US::US(int trigpin, int echopin) {
-    set_echopin(echopin);
-    set_trigpin(trigpin);
-    
+Ultrasonic::Ultrasonic(int trigpin, int echopin) {
+    this->m_TRIGPIN = trigpin;
+    this->m_ECHOPIN = echopin;
+    pinMode(m_TRIGPIN, OUTPUT);
+    pinMode(m_ECHOPIN, INPUT);
 }
 
 // Memberfunctions
 // debug function to re-set echo pin occupation
-void US::set_echopin(int pin) {
+void Ultrasonic::set_echopin(int pin) {
     m_ECHOPIN = pin;
 }
 
 // debug function to re-set trigger pin occupation
-void US::set_trigpin(int pin) {
+void Ultrasonic::set_trigpin(int pin)
+{
     m_TRIGPIN = pin;
 }
 
 // getter for distance from sensor and returns as float
-float US::get_distance() {
-    // TODO content
-}
-
-// getter for multiple distance samples, put and sorted into array to delete potential noise samples
-float US::get_clean_distance() {
-    // TODO content
+float Ultrasonic::get_distance()
+{
+    digitalWrite(m_TRIGPIN, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(m_TRIGPIN, LOW);
+    // get signal duration in microsecs
+    float duration = pulseIn(m_ECHOPIN, HIGH);
+    // calc distance from duration
+    float distance = duration /53;
+    return distance;
 }
