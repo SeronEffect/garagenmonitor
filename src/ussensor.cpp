@@ -13,13 +13,13 @@ Ultrasonic::Ultrasonic(int trigpin, int echopin) {
 // Memberfunctions
 // debug function to re-set echo pin occupation
 void Ultrasonic::set_echopin(int pin) {
-    m_ECHOPIN = pin;
+    this->m_ECHOPIN = pin;
 }
 
 // debug function to re-set trigger pin occupation
 void Ultrasonic::set_trigpin(int pin)
 {
-    m_TRIGPIN = pin;
+    this->m_TRIGPIN = pin;
 }
 
 // getter for distance from sensor and returns as float
